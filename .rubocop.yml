@@ -1,0 +1,17 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'log/**/*'
+    - 'config.ru'
+    - 'Gemfile'
+    - 'Rakefile'
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 100
