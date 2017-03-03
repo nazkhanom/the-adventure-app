@@ -55,5 +55,4 @@ Rails.application.configure do
 
   # Use letter_opener to deliver mail to the browser
   config.action_mailer.delivery_method = :letter_opener
-
 end

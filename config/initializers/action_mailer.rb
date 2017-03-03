@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 ActionMailer::Base.tap do |config|
   config.default_url_options = { host: ENV['APP_BASE_URL'] }
   config.default_options = { from: ENV['ACTION_MAILER_FROM'] }
