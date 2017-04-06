@@ -1,69 +1,50 @@
 # frozen_string_literal: true
 class AdventuresController < ApplicationController
-  before_action :set_adventure, only: [:show, :edit, :update, :destroy]
 
-  # GET /adventures
-  # GET /adventures.json
+
   def index
     @adventures = Adventure.all
   end
 
-  # GET /adventures/1
-  # GET /adventures/1.json
-  def show; end
+  def show
+    load_adventure
+  end
 
-  # GET /adventures/new
   def new
     @adventure = Adventure.new
   end
 
-  # GET /adventures/1/edit
-  def edit; end
+  def edit
+    load_adventure
+  end
 
-  # POST /adventures
-  # POST /adventures.json
   def create
     @adventure = Adventure.new(adventure_params)
-
-    respond_to do |format|
       if @adventure.save
-        format.html { redirect_to @adventure, notice: 'Adventure was successfully created.' }
-        format.json { render :show, status: :created, location: @adventure }
+        redirect_to @adventure, notice: 'Adventure was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @adventure.errors, status: :unprocessable_entity }
+          render :new
       end
-    end
   end
 
-  # PATCH/PUT /adventures/1
-  # PATCH/PUT /adventures/1.json
   def update
-    respond_to do |format|
+    load_adventure
       if @adventure.update(adventure_params)
-        format.html { redirect_to @adventure, notice: 'Adventure was successfully updated.' }
-        format.json { render :show, status: :ok, location: @adventure }
+        redirect_to @adventure, notice: 'Adventure was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @adventure.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
-  # DELETE /adventures/1
-  # DELETE /adventures/1.json
   def destroy
+    load_adventure
     @adventure.destroy
-    respond_to do |format|
-      format.html { redirect_to adventures_url, notice: 'Adventure was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to adventures_url, notice: 'Adventure was successfully destroyed.'
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_adventure
+  def load_adventure
     @adventure = Adventure.find(params[:id])
   end
 
