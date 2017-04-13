@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170309113600) do
   enable_extension "plpgsql"
 
   create_table "adventures", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        null: false
     t.text     "description"
     t.string   "picture"
     t.datetime "created_at",  null: false
