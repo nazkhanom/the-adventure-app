@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 class AdventuresController < ApplicationController
-
-
   def index
     @adventures = Adventure.all
   end
@@ -20,26 +18,26 @@ class AdventuresController < ApplicationController
 
   def create
     @adventure = Adventure.new(adventure_params)
-      if @adventure.save
-        redirect_to @adventure, notice: 'Adventure was successfully created.'
-      else
-          render :new
-      end
+    if @adventure.save
+      redirect_to @adventure, notice: 'Adventure was successfully created.'
+    else
+      render :new
+    end
   end
 
   def update
     load_adventure
-      if @adventure.update(adventure_params)
-        redirect_to @adventure, notice: 'Adventure was successfully updated.'
-      else
-        render :edit
-      end
+    if @adventure.update(adventure_params)
+      redirect_to @adventure, notice: 'Adventure was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
     load_adventure
     @adventure.destroy
-      redirect_to adventures_url, notice: 'Adventure was successfully destroyed.'
+    redirect_to adventures_url, notice: 'Adventure was successfully destroyed.'
   end
 
   private
