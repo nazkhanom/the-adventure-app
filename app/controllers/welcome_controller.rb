@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 class WelcomeController < ApplicationController
-  def show; end
+  skip_before_action :authenticate_user!
 end
