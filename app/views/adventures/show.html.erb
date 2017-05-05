@@ -1,19 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @adventure.name %>
-</p>
+<div class="thumbnail">
+  <%= image_tag(@adventure.picture_url, width: 500, height: 500) if @adventure.picture.present? %>
+      <div class="caption">
+        <h3><%= @adventure.name %></h3>
+        <%= @adventure.description %>
+      </div>
+    </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @adventure.description %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-
-<%= image_tag(@adventure.picture_url, width: 600) if @adventure.picture.present? %>
 
 <%= link_to 'Edit', edit_adventure_path(@adventure) %> |
 <%= link_to 'Back', adventures_path %>
