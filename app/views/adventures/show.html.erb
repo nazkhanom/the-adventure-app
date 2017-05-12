@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<% if @adventure.achieved? %>
+<div class="alert alert-success">
+  <h2>Achieved!</h2>
+</div>
+<% end %>
 <div class="thumbnail">
   <%= image_tag(@adventure.picture_url, width: 500, height: 500) if @adventure.picture.present? %>
       <div class="caption">
@@ -10,4 +14,5 @@
 
 
 <%= link_to 'Edit', edit_adventure_path(@adventure) %> |
+<%= link_to 'Achieved', adventure_path(@adventure, adventure: {achieved: true}), method: :put %> |
 <%= link_to 'Back', adventures_path %>
