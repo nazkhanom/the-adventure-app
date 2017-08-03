@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class AdventuresController < ApplicationController
   def index
-    @adventures = Adventure.all
+    @adventures = Adventure.where(adventure_filter_params).all
   end
 
   def show
@@ -49,5 +49,9 @@ class AdventuresController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def adventure_params
     params.require(:adventure).permit(:name, :description, :picture, :achieved)
+  end
+
+  def adventure_filter_params
+    params.permit(:achieved)
   end
 end
