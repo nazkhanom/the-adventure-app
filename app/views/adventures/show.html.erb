@@ -14,5 +14,5 @@
 
 
 <%= link_to 'Edit', edit_adventure_path(@adventure) %> |
-<%= link_to 'Achieved', adventure_path(@adventure, adventure: {achieved: true}), method: :put %> |
+<%= link_to 'Achieved', adventure_path(@adventure, adventure: {achieved: true}), method: :put  unless @adventure.achieved? %> |
 <%= link_to 'Back', adventures_path %>
